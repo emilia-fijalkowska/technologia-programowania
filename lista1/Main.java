@@ -4,7 +4,7 @@ public class Main {
         String name = "Hanna";
         int age = 23;
 
-        System.out.println("Hello, " + name + "!");
+        System.out.println("Hello, Hania");
         System.out.println("Age: " + age);
     }
 }
