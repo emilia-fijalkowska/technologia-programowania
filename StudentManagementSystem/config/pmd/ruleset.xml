@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="Student Management Rules"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.github.io/schema/ruleset_2_0_0.xsd">
+
+    <description>
+        Rules for the Student Management System.
+        System.out.println is allowed because this is a console application.
+    </description>
+
+    <rule ref="category/java/bestpractices.xml">
+        <exclude name="SystemPrintln"/>
+    </rule>
+
+</ruleset>

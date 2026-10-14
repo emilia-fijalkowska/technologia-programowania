@@ -1,0 +1,34 @@
+﻿@startuml
+
+class Main {
+    +main(args: String[]): void
+    -printMenu(): void
+    -addStudent(scanner: Scanner, manager: StudentManager): void
+    -displayStudents(manager: StudentManager): void
+    -searchStudent(scanner: Scanner, manager: StudentManager): void
+    -removeStudent(scanner: Scanner, manager: StudentManager): void
+}
+
+class Student {
+    -firstName: String
+    -lastName: String
+    -indexNumber: String
+    +Student(firstName: String, lastName: String, indexNumber: String)
+    +getFirstName(): String
+    +getLastName(): String
+    +getIndexNumber(): String
+    +toString(): String
+}
+
+class StudentManager {
+    -students: List<Student>
+    +addStudent(student: Student): boolean
+    +getAllStudents(): List<Student>
+    +findStudent(indexNumber: String): Optional<Student>
+    +removeStudent(indexNumber: String): boolean
+}
+
+Main ..> StudentManager : uses
+StudentManager "1" o-- "*" Student : manages
+
+@enduml
