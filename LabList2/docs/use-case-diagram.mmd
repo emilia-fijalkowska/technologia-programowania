@@ -1,0 +1,25 @@
+flowchart LR
+    B["Bibliotekarz"]
+
+    subgraph System["System biblioteczny"]
+        UC1(["Dodaj tytuł książki"])
+        UC2(["Dodaj egzemplarz książki"])
+        UC3(["Zarejestruj czytelnika"])
+        UC4(["Wyświetl książki"])
+        UC5(["Wyświetl egzemplarze"])
+        UC6(["Wyświetl czytelników"])
+        UC7(["Wyświetl aktywne wypożyczenia"])
+        UC8(["Wypożycz egzemplarz"])
+        UC9(["Zwróć egzemplarz"])
+    end
+
+    B --- UC1
+    B --- UC2
+    B --- UC3
+    B --- UC4
+    B --- UC5
+    B --- UC6
+    B --- UC7
+    B --- UC8
+    B --- UC9
+

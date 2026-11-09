@@ -1,0 +1,95 @@
+classDiagram
+    class Book {
+        - isbn: String
+        - title: String
+        - author: String
+        + Book(isbn: String, title: String, author: String)
+        + getIsbn(): String
+        + getTitle(): String
+        + getAuthor(): String
+        + toString(): String
+        + equals(object: Object): boolean
+        + hashCode(): int
+    }
+
+    class BookCopy {
+        - id: int
+        - book: Book
+        - borrowed: boolean
+        + BookCopy(id: int, book: Book)
+        + getId(): int
+        + getBook(): Book
+        + isBorrowed(): boolean
+        + borrow(): void
+        + returnCopy(): void
+        + toString(): String
+    }
+
+    class Reader {
+        - id: int
+        - name: String
+        - email: String
+        + Reader(id: int, name: String, email: String)
+        + getId(): int
+        + getName(): String
+        + getEmail(): String
+        + toString(): String
+    }
+
+    class Loan {
+        - reader: Reader
+        - bookCopy: BookCopy
+        + Loan(reader: Reader, bookCopy: BookCopy)
+        + getReader(): Reader
+        + getBookCopy(): BookCopy
+        + toString(): String
+    }
+
+    class Library {
+        - books: List<Book>
+        - copies: List<BookCopy>
+        - readers: List<Reader>
+        - loans: List<Loan>
+        + addBook(book: Book): void
+        + addCopy(copy: BookCopy): void
+        + addReader(reader: Reader): void
+        + addLoan(reader: Reader, copy: BookCopy): void
+        + returnBook(copy: BookCopy): void
+        + displayBooks(): void
+        + displayCopies(): void
+        + displayReaders(): void
+        + displayLoans(): void
+        + getBooks(): List<Book>
+        + getReaders(): List<Reader>
+        + getCopies(): List<BookCopy>
+    }
+
+    class ConsoleUI {
+        - library: Library
+        - scanner: Scanner
+        + ConsoleUI(library: Library)
+        + start(): void
+        - displayMenu(): void
+        - addBook(): void
+        - addBookCopy(): void
+        - addReader(): void
+        - borrowBook(): void
+        - returnBook(): void
+    }
+
+    class Main {
+        + main(args: String[]): void
+    }
+
+    Book "1" -- "0..*" BookCopy : has
+    Reader "1" -- "0..*" Loan : makes
+    BookCopy "1" -- "0.." Loan : appears in
+
+    Library "1" o-- "0..*" Book
+    Library "1" o-- "0..*" BookCopy
+    Library "1" o-- "0..*" Reader
+    Library "1" o-- "0..*" Loan
+
+    ConsoleUI --> Library : uses
+    Main ..> Library : creates
+    Main ..> ConsoleUI : starts
